@@ -11,7 +11,7 @@
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<maven.compiler.target>11</maven.compiler.target>
 	<maven.compiler.source>11</maven.compiler.source>
-	<exec.mainClass>dad.javafx.IMC.MainIMC</exec.mainClass>
+	<exec.mainClass>dad.javafx.micv.Main</exec.mainClass>
   </properties>
 
   <dependencies>
