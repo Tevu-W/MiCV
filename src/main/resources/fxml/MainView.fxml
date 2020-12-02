@@ -50,7 +50,7 @@
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="G" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
-                  <MenuItem text="Guardar _como..." />
+                  <MenuItem onAction="#onGuardarComoAction" text="Guardar _como..." />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem onAction="#OnSalirAction" text="_Salir">
                      <accelerator>

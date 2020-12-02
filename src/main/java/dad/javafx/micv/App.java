@@ -6,11 +6,15 @@ import javafx.stage.Stage;
 
 public class App extends Application{
 	
-	MainController controller;
+	private MainController controller;
+	
+	private static Stage primaryStage;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
+		
+		App.primaryStage = primaryStage;
 		
 		controller = new MainController();
 		
@@ -19,6 +23,10 @@ public class App extends Application{
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("MiCV");
 		primaryStage.show();
+	}
+	
+	public static Stage getPrimaryStage() {
+		return primaryStage;
 	}
 	
 	public static void main(String[] args) {

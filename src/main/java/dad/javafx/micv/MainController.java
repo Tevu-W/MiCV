@@ -1,5 +1,6 @@
 package dad.javafx.micv;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,6 +11,7 @@ import dad.javafx.micv.contacto.ContactoController;
 import dad.javafx.micv.formacion.FormacionController;
 import dad.javafx.micv.model.CV;
 import dad.javafx.micv.personal.PersonalController;
+import dad.javafx.micv.utils.JSONUtils;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -20,6 +22,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 public class MainController implements Initializable{
 
@@ -74,6 +78,7 @@ public class MainController implements Initializable{
     	cv.addListener((o, ov, nv) -> onCVChanged(o, ov, nv));
     	
     	cv.set(new CV());
+    	
 	}
     
     private void onCVChanged(ObservableValue<? extends CV> o, CV ov, CV nv) {
@@ -101,11 +106,45 @@ public class MainController implements Initializable{
     @FXML
     void onAbrirAction(ActionEvent event) {
 
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.setTitle("Abrir un currículum");
+    	fileChooser.getExtensionFilters().add(new ExtensionFilter("Currículum Vitae (*.cv)", "*.cv"));
+    	fileChooser.getExtensionFilters().add(new ExtensionFilter("Todos los archivos", "*.*"));
+    	File cvFile = fileChooser.showOpenDialog(App.getPrimaryStage());
+    	if (cvFile != null) {
+    		try {
+				cv.set(JSONUtils.fromJson(cvFile, CV.class));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    	}
+    	
     }
 
     @FXML
     void onGuardarAction(ActionEvent event) {
 
+    }
+    
+    @FXML
+    void onGuardarComoAction(ActionEvent event) {
+    	
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.setTitle("Guardar un currículum");
+    	fileChooser.getExtensionFilters().add(new ExtensionFilter("Currículum Vitae (*.cv)", "*.cv"));
+    	fileChooser.getExtensionFilters().add(new ExtensionFilter("Todos los archivos", "*.*"));
+    	File cvFile = fileChooser.showSaveDialog(App.getPrimaryStage());
+    	if (cvFile != null) {
+    		
+    		try {
+				JSONUtils.toJson(cvFile, cv.get());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    		
+    	}
+    	
+    	
     }
 
     @FXML

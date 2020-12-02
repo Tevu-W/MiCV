@@ -14,9 +14,7 @@ import javafx.scene.control.TableView;
 
 public class ContactoController implements Initializable {
 
-	
-	
-	
+
 	//view
 	
 	@FXML

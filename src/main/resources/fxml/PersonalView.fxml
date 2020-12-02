@@ -49,7 +49,7 @@
       <DatePicker fx:id="nacimientoPicker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <TextField fx:id="codigoPostalText" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <TextField fx:id="localidadText" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-      <ComboBox fx:id="paisCombo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <ComboBox fx:id="paisCombo" prefWidth="150.0" promptText="Seleccione un país" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <ListView fx:id="nacionalidadView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <TextArea fx:id="direccionArea" prefRowCount="2" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
       <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="8">

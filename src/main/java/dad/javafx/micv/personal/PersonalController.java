@@ -85,7 +85,7 @@ public class PersonalController implements Initializable {
 	
 	private void onPersonalChanged(ObservableValue<? extends Personal> o, Personal ov, Personal nv) {
 		
-		System.out.println("ov= " +ov + " | nv = " +nv);
+		//System.out.println("ov= " +ov + " | nv = " +nv);
 		
 		if( ov != null ) {
 			
