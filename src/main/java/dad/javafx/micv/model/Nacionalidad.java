@@ -7,6 +7,11 @@ public class Nacionalidad {
 
 	private StringProperty denominacion = new SimpleStringProperty();
 
+	@Override
+	public String toString() {
+		return getDenominacion();
+	}
+	
 	public Nacionalidad() {
 	}
 

@@ -1,9 +1,5 @@
 package dad.javafx.micv.model;
 
-import org.hildan.fxgson.FxGson;
-
-import com.google.gson.Gson;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
@@ -23,7 +19,7 @@ public class CV {
 		this.personalProperty().set(personal);
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 
 		CV cv = new CV();
 		cv.getPersonal().setNombre("Chuck");
@@ -38,6 +34,6 @@ public class CV {
 
 		cv = gson.fromJson(json, CV.class); // convertir json a modelo de datos (unmarshalling)
 
-	}
+	}*/
 
 }

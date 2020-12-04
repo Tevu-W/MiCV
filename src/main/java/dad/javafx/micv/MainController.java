@@ -123,7 +123,7 @@ public class MainController implements Initializable{
 
     @FXML
     void onGuardarAction(ActionEvent event) {
-
+    	
     }
     
     @FXML
@@ -149,7 +149,6 @@ public class MainController implements Initializable{
 
     @FXML
     void onNuevoAction(ActionEvent event) {
-    	System.out.println("Has pulsado nuevo");
     	cv.set(new CV());
     }
 
