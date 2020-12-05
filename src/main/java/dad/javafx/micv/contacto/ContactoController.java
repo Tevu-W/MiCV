@@ -97,12 +97,6 @@ public class ContactoController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		contacto.addListener((o, ov, nv) -> onContactChanged(o, ov, nv));
-
-		seleccionadoTelefono.bind(telefonosView.getSelectionModel().selectedItemProperty());
-		seleccionadoEmail.bind(correoView.getSelectionModel().selectedItemProperty());
-		seleccionadoWeb.bind(webView.getSelectionModel().selectedItemProperty());
-
 		numeroColumn.setCellValueFactory(v -> v.getValue().numeroProperty());
 		tipoColumn.setCellValueFactory(v -> v.getValue().tipoProperty());
 		emailColumn.setCellValueFactory(v -> v.getValue().direccionProperty());
@@ -112,6 +106,12 @@ public class ContactoController implements Initializable {
 		tipoColumn.setCellFactory(ComboBoxTableCell.forTableColumn(TipoTelefono.values()));
 		emailColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 		urlColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+
+		seleccionadoTelefono.bind(telefonosView.getSelectionModel().selectedItemProperty());
+		seleccionadoEmail.bind(correoView.getSelectionModel().selectedItemProperty());
+		seleccionadoWeb.bind(webView.getSelectionModel().selectedItemProperty());
+
+		contacto.addListener((o, ov, nv) -> onContactChanged(o, ov, nv));
 
 	}
 
