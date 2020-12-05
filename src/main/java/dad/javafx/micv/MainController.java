@@ -85,11 +85,13 @@ public class MainController implements Initializable{
     	
     	if( ov != null ) {
     		personalController.personalProperty().unbind();
+    		contactoController.contactoProperty().unbind();
     		//desbindear el resto de controllers
     	}
     	
     	if( nv != null ) {
     		personalController.personalProperty().bind(nv.personalProperty());
+    		contactoController.contactoProperty().bind(nv.contactoProperty());
     		//bindear el resto de controllers
     	}
     }

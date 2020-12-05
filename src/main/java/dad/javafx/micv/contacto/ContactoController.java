@@ -3,7 +3,12 @@ package dad.javafx.micv.contacto;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import dad.javafx.micv.model.Contacto;
+import dad.javafx.micv.model.Telefono;
 import javafx.fxml.Initializable;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,14 +19,17 @@ import javafx.scene.control.TableView;
 
 public class ContactoController implements Initializable {
 
-
+	//model
+	private ObjectProperty<Contacto> contacto = new SimpleObjectProperty<Contacto>();
+	
+	
 	//view
 	
 	@FXML
     private SplitPane view;
 	
 	@FXML
-    private TableView<?> telefonosView;
+    private TableView<Telefono> telefonosView;
 
     @FXML
     private TableColumn<?, ?> numeroColumn;
@@ -68,6 +76,8 @@ public class ContactoController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
     	
+    	
+    	
 	}
     
     public SplitPane getView() {
@@ -103,6 +113,24 @@ public class ContactoController implements Initializable {
     void eliminarCorreo(ActionEvent event) {
 
     }
+
+
+	public final ObjectProperty<Contacto> contactoProperty() {
+		return this.contacto;
+	}
+	
+
+
+	public final Contacto getContacto() {
+		return this.contactoProperty().get();
+	}
+	
+
+
+	public final void setContacto(final Contacto contacto) {
+		this.contactoProperty().set(contacto);
+	}
+	
 	
 	
 	
