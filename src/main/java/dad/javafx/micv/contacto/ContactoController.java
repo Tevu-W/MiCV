@@ -42,7 +42,6 @@ public class ContactoController implements Initializable {
 
 	//model
 	private ObjectProperty<Contacto> contacto = new SimpleObjectProperty<Contacto>();
-	private ListProperty<Telefono> telefonos = new SimpleListProperty<Telefono>(FXCollections.observableArrayList());
 	//private ListProperty<Email> emails = new SimpleListProperty<Email>(FXCollections.observableArrayList());
 	//private ListProperty<Web> webs = new SimpleListProperty<Web>(FXCollections.observableArrayList());
 	
