@@ -9,7 +9,7 @@
 
 <BorderPane fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <TableView fx:id="conocimientosView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <TableView fx:id="conocimientosView" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="denomColumn" prefWidth="176.0" text="Denominación" />
           <TableColumn fx:id="nivelColumn" prefWidth="130.4000244140625" text="Nivel" />
@@ -19,9 +19,9 @@
    <right>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="añadirConocimientoButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Añadir conocimientos" />
-            <Button fx:id="AñadirIdiomaButton1" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Añadir idioma" />
-            <Button fx:id="EliminarConocimientoButton" layoutX="10.0" layoutY="36.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Eliminar" />
+            <Button fx:id="añadirConocimientoButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAñadirConocimientoSinIdioma" text="Añadir conocimientos" />
+            <Button fx:id="AñadirIdiomaButton1" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAñadirConocimientoConIdioma" text="Añadir idioma" />
+            <Button fx:id="EliminarConocimientoButton" layoutX="10.0" layoutY="36.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onEliminarConocimiento" text="Eliminar" />
          </children>
          <BorderPane.margin>
             <Insets left="5.0" />

@@ -23,7 +23,7 @@
    <children>
       <Label text="Denominación" />
       <Label text="Nivel" GridPane.rowIndex="1" />
-      <TextField GridPane.columnIndex="1" />
+      <TextField fx:id="denominacionSinIdiomaField" GridPane.columnIndex="1" />
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <ComboBox fx:id="nivelComboSinIdioma" prefWidth="150.0" />
@@ -33,7 +33,7 @@
       <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
             <Button fx:id="crearConocimientoSinIdioma" defaultButton="true" mnemonicParsing="false" onAction="#onCrearConocimientoSinIdioma" text="Crear" />
-            <Button fx:id="canclearSinIdioma" mnemonicParsing="false" onAction="#onCancelarSinIdioma" text="Cancelar" />
+            <Button fx:id="cancelarSinIdioma" mnemonicParsing="false" onAction="#onCancelarSinIdioma" text="Cancelar" />
          </children>
       </HBox>
    </children>
