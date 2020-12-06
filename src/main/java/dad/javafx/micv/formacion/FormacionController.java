@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import dad.javafx.micv.model.Titulo;
 import javafx.fxml.Initializable;
 import javafx.beans.property.ListProperty;
@@ -15,13 +16,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.LocalDateStringConverter;
 
@@ -57,6 +58,50 @@ public class FormacionController implements Initializable {
 
     @FXML
     private Button eliminarFormacionButton;
+    
+    
+    //Ventana nueva
+    
+    private Stage stage;
+    
+    @FXML
+    private BorderPane viewAdd;
+
+    @FXML
+    private TextField denominacionField;
+
+    @FXML
+    private TextField organizadorField;
+
+    @FXML
+    private DatePicker desdePicker;
+
+    @FXML
+    private DatePicker hastaPicker;
+
+    @FXML
+    private Button crearButton;
+
+    @FXML
+    private Button cancelarButton;
+
+    @FXML
+    void onCancelarButton(ActionEvent event) {
+    	stage.close();
+    }
+
+    @FXML
+    void onCrearButton(ActionEvent event) {
+    	
+    	Titulo titulo = new Titulo();
+    	titulo.setDenominacion(denominacionField.getText());
+    	titulo.setOrganizador(organizadorField.getText());
+    	titulo.setDesde(desdePicker.getValue());
+    	titulo.setHasta(hastaPicker.getValue());
+    	
+    	formacion.add(titulo);
+    	
+    }
     
     
 
@@ -112,19 +157,27 @@ public class FormacionController implements Initializable {
 	public 
 	
 	@FXML
-    void addFormacion(ActionEvent event) {
-		try {
-			
-			ventana = new addConocimientoWindow();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+    void addFormacion(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddConocimiento.fxml"));
+		loader.setController(this);
+		loader.load();
+		
+		stage = new Stage();
+		Scene scene = new Scene(loader.getRoot(), 600, 200);
+		stage.setTitle("Añadir formación");
+		stage.initModality(Modality.WINDOW_MODAL);
+		//Hasta que no se cierre la ventana, la ventana padre está abierta
+		stage.initOwner(view.getScene().getWindow());
+		stage.setScene(scene);
+		stage.setResizable(true);
+		stage.show();
     }
 
     @FXML
     void deleteFormacion(ActionEvent event) {
-
+    	
+    	formacion.remove(formacionView.getSelectionModel().getSelectedItem());
+    	
     }
 
 
