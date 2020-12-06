@@ -10,11 +10,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import dad.javafx.micv.model.Conocimiento;
 import dad.javafx.micv.model.Idioma;
 import dad.javafx.micv.model.Nivel;
