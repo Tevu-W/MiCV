@@ -86,12 +86,14 @@ public class MainController implements Initializable{
     	if( ov != null ) {
     		personalController.personalProperty().unbind();
     		contactoController.contactoProperty().unbind();
+    		formacionController.formacionProperty().unbind();
     		//desbindear el resto de controllers
     	}
     	
     	if( nv != null ) {
     		personalController.personalProperty().bind(nv.personalProperty());
     		contactoController.contactoProperty().bind(nv.contactoProperty());
+    		formacionController.formacionProperty().bind(nv.formacionProperty());
     		//bindear el resto de controllers
     	}
     }

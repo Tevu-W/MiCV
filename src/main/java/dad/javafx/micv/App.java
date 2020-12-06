@@ -18,7 +18,7 @@ public class App extends Application{
 		
 		controller = new MainController();
 		
-		Scene scene = new Scene(controller.getView(), 700, 500);
+		Scene scene = new Scene(controller.getView(), 800, 600);
 		
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("MiCV");
