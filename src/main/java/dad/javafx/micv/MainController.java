@@ -25,150 +25,144 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-public class MainController implements Initializable{
+public class MainController implements Initializable {
 
-	//controllers
+	// controllers
 	private PersonalController personalController = new PersonalController();
 	private ContactoController contactoController = new ContactoController();
 	private FormacionController formacionController = new FormacionController();
 	private ExperienciaController experienciaController = new ExperienciaController();
 	private ConocimientosController conocimientosController = new ConocimientosController();
-	
-	//model
+
+	// model
 	private ObjectProperty<CV> cv = new SimpleObjectProperty<>();
-	
-	//view
-	
+
+	// view
+
 	@FXML
-    private BorderPane view;
+	private BorderPane view;
 
-    @FXML
-    private Tab PersonalTab;
+	@FXML
+	private Tab PersonalTab;
 
-    @FXML
-    private Tab ContactoTab;
+	@FXML
+	private Tab ContactoTab;
 
-    @FXML
-    private Tab FormacionTab;
+	@FXML
+	private Tab FormacionTab;
 
-    @FXML
-    private Tab ExperienciaTab;
+	@FXML
+	private Tab ExperienciaTab;
 
-    @FXML
-    private Tab ConocimientosTab;
-    
-    String ruta;
-    
-    
-    public MainController() throws IOException {
+	@FXML
+	private Tab ConocimientosTab;
+
+	String ruta;
+
+	public MainController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
 		loader.setController(this);
 		loader.load();
 	}
-    
-    
-    @Override
+
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
-    	PersonalTab.setContent(personalController.getView());
-    	ContactoTab.setContent(contactoController.getView());
-    	FormacionTab.setContent(formacionController.getView());
-    	ExperienciaTab.setContent(experienciaController.getView());
-    	ConocimientosTab.setContent(conocimientosController.getView());
-    	
-    	cv.addListener((o, ov, nv) -> onCVChanged(o, ov, nv));
-    	
-    	cv.set(new CV());
-    	
+
+		PersonalTab.setContent(personalController.getView());
+		ContactoTab.setContent(contactoController.getView());
+		FormacionTab.setContent(formacionController.getView());
+		ExperienciaTab.setContent(experienciaController.getView());
+		ConocimientosTab.setContent(conocimientosController.getView());
+
+		cv.addListener((o, ov, nv) -> onCVChanged(o, ov, nv));
+
+		cv.set(new CV());
+
 	}
-    
-    private void onCVChanged(ObservableValue<? extends CV> o, CV ov, CV nv) {
-    	
-    	if( ov != null ) {
-    		personalController.personalProperty().unbind();
-    		contactoController.contactoProperty().unbind();
-    		formacionController.formacionProperty().unbind();
-    		experienciaController.experienciasProperty().unbind();
-    		conocimientosController.habilidadesProperty().unbind();
-    		//desbindear el resto de controllers
-    	}
-    	
-    	if( nv != null ) {
-    		personalController.personalProperty().bind(nv.personalProperty());
-    		contactoController.contactoProperty().bind(nv.contactoProperty());
-    		formacionController.formacionProperty().bind(nv.formacionProperty());
-    		experienciaController.experienciasProperty().bind(nv.experienciasProperty());
-    		conocimientosController.habilidadesProperty().bind(nv.habilidadesProperty());
-    		//bindear el resto de controllers
-    	}
-    }
-    
-    public BorderPane getView() {
+
+	private void onCVChanged(ObservableValue<? extends CV> o, CV ov, CV nv) {
+
+		if (ov != null) {
+			personalController.personalProperty().unbind();
+			contactoController.contactoProperty().unbind();
+			formacionController.formacionProperty().unbind();
+			experienciaController.experienciasProperty().unbind();
+			conocimientosController.habilidadesProperty().unbind();
+			// desbindear el resto de controllers
+		}
+
+		if (nv != null) {
+			personalController.personalProperty().bind(nv.personalProperty());
+			contactoController.contactoProperty().bind(nv.contactoProperty());
+			formacionController.formacionProperty().bind(nv.formacionProperty());
+			experienciaController.experienciasProperty().bind(nv.experienciasProperty());
+			conocimientosController.habilidadesProperty().bind(nv.habilidadesProperty());
+			// bindear el resto de controllers
+		}
+	}
+
+	public BorderPane getView() {
 		return view;
 	}
 
-    @FXML
-    void OnSalirAction(ActionEvent event) {
-    	Platform.exit();
-    }
+	@FXML
+	void OnSalirAction(ActionEvent event) {
+		Platform.exit();
+	}
 
-    @FXML
-    void onAbrirAction(ActionEvent event) {
+	@FXML
+	void onAbrirAction(ActionEvent event) {
 
-    	FileChooser fileChooser = new FileChooser();
-    	fileChooser.setTitle("Abrir un currículum");
-    	fileChooser.getExtensionFilters().add(new ExtensionFilter("Currículum Vitae (*.cv)", "*.cv"));
-    	fileChooser.getExtensionFilters().add(new ExtensionFilter("Todos los archivos", "*.*"));
-    	File cvFile = fileChooser.showOpenDialog(App.getPrimaryStage());
-    	if (cvFile != null) {
-    		try {
-    			ruta = cvFile.getAbsolutePath();
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Abrir un currículum");
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("Currículum Vitae (*.cv)", "*.cv"));
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("Todos los archivos", "*.*"));
+		File cvFile = fileChooser.showOpenDialog(App.getPrimaryStage());
+		if (cvFile != null) {
+			try {
+				ruta = cvFile.getAbsolutePath();
 				cv.set(JSONUtils.fromJson(cvFile, CV.class));
 			} catch (IOException e) {
 			}
-    	}
-    	
-    }
+		}
 
-    @FXML
-    void onGuardarAction(ActionEvent event) {
-    	
-    	File cvFile = new File(ruta);
-    	if (cvFile != null) {
-    		try {
+	}
+
+	@FXML
+	void onGuardarAction(ActionEvent event) {
+
+		File cvFile = new File(ruta);
+		if (cvFile != null) {
+			try {
 				JSONUtils.toJson(cvFile, cv.get());
 			} catch (IOException e) {
 			}
-    	}
-    }
-    
-    @FXML
-    void onGuardarComoAction(ActionEvent event) {
-    	
-    	FileChooser fileChooser = new FileChooser();
-    	fileChooser.setTitle("Guardar un currículum");
-    	fileChooser.getExtensionFilters().add(new ExtensionFilter("Currículum Vitae (*.cv)", "*.cv"));
-    	fileChooser.getExtensionFilters().add(new ExtensionFilter("Todos los archivos", "*.*"));
-    	File cvFile = fileChooser.showSaveDialog(App.getPrimaryStage());
-    	if (cvFile != null) {
-    		try {
-    			ruta = cvFile.getAbsolutePath();
+		}
+	}
+
+	@FXML
+	void onGuardarComoAction(ActionEvent event) {
+
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Guardar un currículum");
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("Currículum Vitae (*.cv)", "*.cv"));
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("Todos los archivos", "*.*"));
+		File cvFile = fileChooser.showSaveDialog(App.getPrimaryStage());
+		if (cvFile != null) {
+			try {
+				ruta = cvFile.getAbsolutePath();
 				JSONUtils.toJson(cvFile, cv.get());
 			} catch (IOException e) {
 			}
-    		
-    	}
-    	
-    	
-    }
 
-    @FXML
-    void onNuevoAction(ActionEvent event) {
-    	cv.set(new CV());
-    }
+		}
 
-	
-	
-	
+	}
+
+	@FXML
+	void onNuevoAction(ActionEvent event) {
+		cv.set(new CV());
+	}
+
 }
