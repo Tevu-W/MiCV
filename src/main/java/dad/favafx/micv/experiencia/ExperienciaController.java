@@ -23,6 +23,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -158,6 +159,7 @@ public class ExperienciaController implements Initializable {
 		// Hasta que no se cierre la ventana, la ventana padre está abierta
 		stage.initOwner(view.getScene().getWindow());
 		stage.setScene(scene);
+		stage.getIcons().add(new Image("/images/cv64x64.png"));
 		stage.setResizable(true);
 		stage.show();
 	}

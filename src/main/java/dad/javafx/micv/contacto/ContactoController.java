@@ -188,6 +188,8 @@ public class ContactoController implements Initializable {
 		grid.add(comboTelefono, 1, 1);
 
 		dialog.getDialogPane().setContent(grid);
+		
+		
 
 		dialog.setResultConverter(dialogButton -> {
 			if (dialogButton == añadir) {

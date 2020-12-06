@@ -32,6 +32,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 
 public class ConocimientosController implements Initializable {
@@ -217,6 +218,7 @@ public class ConocimientosController implements Initializable {
 		// Hasta que no se cierre la ventana, la ventana padre está abierta
 		stageConIdioma.initOwner(view.getScene().getWindow());
 		stageConIdioma.setScene(scene);
+		stageConIdioma.getIcons().add(new Image("/images/cv64x64.png"));
 		stageConIdioma.setResizable(true);
 		stageConIdioma.show();
 
@@ -236,6 +238,7 @@ public class ConocimientosController implements Initializable {
 		// Hasta que no se cierre la ventana, la ventana padre está abierta
 		stageSinIdioma.initOwner(view.getScene().getWindow());
 		stageSinIdioma.setScene(scene);
+		stageSinIdioma.getIcons().add(new Image("/images/cv64x64.png"));
 		stageSinIdioma.setResizable(true);
 		stageSinIdioma.show();
 
