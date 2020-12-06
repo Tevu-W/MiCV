@@ -1,4 +1,4 @@
-package dad.favafx.micv.experiencia;
+package dad.javafx.micv.experiencia;
 
 import java.io.IOException;
 import java.net.URL;
