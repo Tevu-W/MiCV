@@ -88,6 +88,7 @@ public class MainController implements Initializable{
     		contactoController.contactoProperty().unbind();
     		formacionController.formacionProperty().unbind();
     		experienciaController.experienciasProperty().unbind();
+    		conocimientosController.habilidadesProperty().unbind();
     		//desbindear el resto de controllers
     	}
     	
@@ -96,6 +97,7 @@ public class MainController implements Initializable{
     		contactoController.contactoProperty().bind(nv.contactoProperty());
     		formacionController.formacionProperty().bind(nv.formacionProperty());
     		experienciaController.experienciasProperty().bind(nv.experienciasProperty());
+    		conocimientosController.habilidadesProperty().bind(nv.habilidadesProperty());
     		//bindear el resto de controllers
     	}
     }
