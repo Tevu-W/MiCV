@@ -12,8 +12,9 @@ public class CV {
 	private ObjectProperty<Personal> personal = new SimpleObjectProperty<Personal>(new Personal());
 	private ObjectProperty<Contacto> contacto = new SimpleObjectProperty<Contacto>(new Contacto());
 	private ListProperty<Titulo> formacion = new SimpleListProperty<Titulo>(FXCollections.observableArrayList());
-	
-	
+	private ListProperty<Experiencia> experiencias = new SimpleListProperty<Experiencia>(
+			FXCollections.observableArrayList());
+
 	public final ObjectProperty<Personal> personalProperty() {
 		return this.personal;
 	}
@@ -29,12 +30,10 @@ public class CV {
 	public final ObjectProperty<Contacto> contactoProperty() {
 		return this.contacto;
 	}
-	
 
 	public final Contacto getContacto() {
 		return this.contactoProperty().get();
 	}
-	
 
 	public final void setContacto(final Contacto contacto) {
 		this.contactoProperty().set(contacto);
@@ -43,34 +42,45 @@ public class CV {
 	public final ListProperty<Titulo> formacionProperty() {
 		return this.formacion;
 	}
-	
 
 	public final ObservableList<Titulo> getFormacion() {
 		return this.formacionProperty().get();
 	}
-	
 
 	public final void setFormacion(final ObservableList<Titulo> formacion) {
 		this.formacionProperty().set(formacion);
 	}
-	
-	
 
-	/*public static void main(String[] args) {
+	public final ListProperty<Experiencia> experienciasProperty() {
+		return this.experiencias;
+	}
 
-		CV cv = new CV();
-		cv.getPersonal().setNombre("Chuck");
-		cv.getPersonal().setApellidos("Norris");
-		cv.getPersonal().getNacionalidades().add(new Nacionalidad("estadounidense"));
+	public final ObservableList<Experiencia> getExperiencias() {
+		return this.experienciasProperty().get();
+	}
 
-		Gson gson = FxGson.fullBuilder().setPrettyPrinting().create();
+	public final void setExperiencias(final ObservableList<Experiencia> experiencias) {
+		this.experienciasProperty().set(experiencias);
+	}
 
-		String json = gson.toJson(cv); // convertir modelo de datos a json (marshalling)
-
-		System.out.println(json);
-
-		cv = gson.fromJson(json, CV.class); // convertir json a modelo de datos (unmarshalling)
-
-	}*/
+	/*
+	 * public static void main(String[] args) {
+	 * 
+	 * CV cv = new CV(); cv.getPersonal().setNombre("Chuck");
+	 * cv.getPersonal().setApellidos("Norris");
+	 * cv.getPersonal().getNacionalidades().add(new Nacionalidad("estadounidense"));
+	 * 
+	 * Gson gson = FxGson.fullBuilder().setPrettyPrinting().create();
+	 * 
+	 * String json = gson.toJson(cv); // convertir modelo de datos a json
+	 * (marshalling)
+	 * 
+	 * System.out.println(json);
+	 * 
+	 * cv = gson.fromJson(json, CV.class); // convertir json a modelo de datos
+	 * (unmarshalling)
+	 * 
+	 * }
+	 */
 
 }
