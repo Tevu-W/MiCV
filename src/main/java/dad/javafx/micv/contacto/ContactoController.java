@@ -33,7 +33,9 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
 public class ContactoController implements Initializable {
@@ -147,6 +149,9 @@ public class ContactoController implements Initializable {
 		dialog.setTitle("Nuevo e-mail");
 		dialog.setHeaderText("Crear una nueva dirección de correo");
 		dialog.setContentText("E-mail:");
+		
+		Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image("/images/cv64x64.png"));
 
 		Optional<String> result = dialog.showAndWait();
 
@@ -189,7 +194,8 @@ public class ContactoController implements Initializable {
 
 		dialog.getDialogPane().setContent(grid);
 		
-		
+		Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image("/images/cv64x64.png"));
 
 		dialog.setResultConverter(dialogButton -> {
 			if (dialogButton == añadir) {
@@ -217,6 +223,9 @@ public class ContactoController implements Initializable {
 		dialog.setHeaderText("Crear una nueva dirección web.");
 		dialog.setContentText("URL:");
 
+		Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image("/images/cv64x64.png"));
+		
 		Optional<String> result = dialog.showAndWait();
 
 		if (result.isPresent()) {

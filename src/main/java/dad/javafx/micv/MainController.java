@@ -57,6 +57,8 @@ public class MainController implements Initializable{
     @FXML
     private Tab ConocimientosTab;
     
+    String ruta;
+    
     
     public MainController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
@@ -121,9 +123,9 @@ public class MainController implements Initializable{
     	File cvFile = fileChooser.showOpenDialog(App.getPrimaryStage());
     	if (cvFile != null) {
     		try {
+    			ruta = cvFile.getAbsolutePath();
 				cv.set(JSONUtils.fromJson(cvFile, CV.class));
 			} catch (IOException e) {
-				e.printStackTrace();
 			}
     	}
     	
@@ -132,6 +134,13 @@ public class MainController implements Initializable{
     @FXML
     void onGuardarAction(ActionEvent event) {
     	
+    	File cvFile = new File(ruta);
+    	if (cvFile != null) {
+    		try {
+				JSONUtils.toJson(cvFile, cv.get());
+			} catch (IOException e) {
+			}
+    	}
     }
     
     @FXML
@@ -143,11 +152,10 @@ public class MainController implements Initializable{
     	fileChooser.getExtensionFilters().add(new ExtensionFilter("Todos los archivos", "*.*"));
     	File cvFile = fileChooser.showSaveDialog(App.getPrimaryStage());
     	if (cvFile != null) {
-    		
     		try {
+    			ruta = cvFile.getAbsolutePath();
 				JSONUtils.toJson(cvFile, cv.get());
 			} catch (IOException e) {
-				e.printStackTrace();
 			}
     		
     	}
